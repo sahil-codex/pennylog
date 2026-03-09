@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { sql } from "@/src/lib/db";
-import { signToken } from "@/src/lib/auth";
+import { sql } from "@/lib/db";
+import { signToken } from "@/lib/auth";
 
 export async function POST(req: Request){
     //read json body sent by client and convert it into js obj
