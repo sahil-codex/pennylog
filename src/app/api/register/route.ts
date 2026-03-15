@@ -15,9 +15,18 @@ export async function POST(req: Request) {
         INSERT INTO users (email , password_hash) VALUES  (${email},${hashedPassword})`
         
     ;
-     }catch(error){
-    return NextResponse.json({ error: "User created"},
-        { status:400 }
+    return NextResponse.json({
+        message:"User created succesfully",
+    })
+     }catch(error:any){
+        if(error.code==="2305"){
+            return NextResponse.json(
+                { error: "Email already registered"},
+                { status: 400}
+            );
+        }
+    return NextResponse.json({ error: "Registration failed"},
+        { status:500 }
     );
 }
 }

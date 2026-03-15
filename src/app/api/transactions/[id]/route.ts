@@ -4,7 +4,7 @@ import { getCurrentUser } from "@/lib/getCurrentUser";
 
 export async function DELETE(req:Request,{params}:{params:{id:string}}) {
     const user = await getCurrentUser();
-
+    
      if(!user){
         return NextResponse.json(
             {error: "Unauthorized"},
@@ -12,8 +12,11 @@ export async function DELETE(req:Request,{params}:{params:{id:string}}) {
         );
     }
       
-    const transactionId = params.id;
+    const {id:transactionId} = await params;
     try{
+        await sql`DELETE FROM transactions
+        WHERE id = ${transactionId}
+        AND user_id = ${user.userId}`;
     return NextResponse.json({
         message:"Transaction deleted",
     });
