@@ -4,7 +4,7 @@ import {getUserSummary} from "@/lib/summary";
 import AddTransaction from "@/components/AddTransaction";
 import TransactionList from "@/components/TranactionsList";
 import MonthlyChart from "@/components/MonthlyChart";
-
+import CategoryChart from "@/components/CategoryChart";
 
 async function getSummary(userId:string){
     const summary = await getUserSummary(userId);
@@ -57,6 +57,7 @@ async function getSummary(userId:string){
             </div>
         </div>
         <MonthlyChart/>
+        <CategoryChart/>
         <TransactionList/>
        </div>
     

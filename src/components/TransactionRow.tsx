@@ -1,20 +1,38 @@
 "use client";
-export default function TransactionRow({ transaction }: any) {
+import { useState } from "react";
+import EditTransaction from "./EditTransaction";
 
-  async function deleteTransaction() {
+export default function TransactionRow({ transaction }: any) {
+   const [editing, setEditing] = useState(false);
+   const [loading,setLoading] = useState(false);
+  
+  
+   async function deleteTransaction() {
+    setLoading(true);
     const res = await fetch(`/api/transactions/${transaction.id}`, {
       method: "DELETE",
     });
+ 
 
     if (res.ok) {
       window.location.reload();
     } else {
       alert("Failed to delete transaction");
     }
+    setLoading(false);
   }
-
+    if(editing){
+      return (
+        <tr className="border-t bg-gray-50">
+            <EditTransaction 
+            transaction = {transaction}
+            onClose = {()=> setEditing(false)}
+            />
+        </tr>
+      );
+    }
   return (
-    <tr className="border-t">
+    <tr className="border-t hover:bg-gray-50">
 
       <td className="p-2">
         {new Date(transaction.transaction_date).toLocaleDateString()}
@@ -26,13 +44,9 @@ export default function TransactionRow({ transaction }: any) {
 
       <td className="p-2 font-semibold">${Number(transaction.amount).toFixed(2)}</td>
 
-      <td className="p-2">
-        <button
-          onClick={deleteTransaction}
-          className="text-red-500 hover:underline"
-        >
-          Delete
-        </button>
+      <td className="p-2 flex gap-3">
+        <button onClick={() => setEditing(true)} className="text-blue-500  hover:underline">Edit</button>
+        <button onClick={deleteTransaction} className="text-red-500 hover:underline">Delete</button>
       </td>
 
     </tr>

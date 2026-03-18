@@ -2,6 +2,8 @@ import { sql } from "@/lib/db";
 import { getCurrentUser } from "@/lib/getCurrentUser";
 import TransactionRow from "./TransactionRow";
 
+
+
 export default async function TransactionList(){
     const user= await getCurrentUser();
     if(!user) return null;
