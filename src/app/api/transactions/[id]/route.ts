@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { sql } from "@/lib/db";
 import { getCurrentUser } from "@/lib/getCurrentUser";
 
@@ -31,7 +31,7 @@ export async function PUT(req:Request,{params}:{params:Promise<{id:string}>}){
     );
  }
 }
-export async function DELETE(req:Request,{params}:{params:{id:string}}) {
+export async function DELETE(req:NextRequest,context:{params:Promise<{id:string}>}) {
     const user = await getCurrentUser();
     
      if(!user){
@@ -41,7 +41,7 @@ export async function DELETE(req:Request,{params}:{params:{id:string}}) {
         );
     }
       
-    const {id:transactionId} = await params;
+    const {id:transactionId} = await context.params;
     try{
         await sql`DELETE FROM transactions
         WHERE id = ${transactionId}
