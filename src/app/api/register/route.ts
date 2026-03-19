@@ -5,6 +5,7 @@ import { sql } from "@/lib/db";
 export async function POST(req: Request) {
     const body = await req.json();
     const { email,password} = body;
+      console.log("DB URL:", process.env.DATABASE_URL);
 
     if(!email||!password) {
         return NextResponse.json({error: "Missing fields"},{status:400});
