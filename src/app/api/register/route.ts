@@ -32,7 +32,7 @@ console.log("PASSWORD:", password);
                 { status: 400}
             );
         }
-    return NextResponse.json({ error: "Registration failed"},
+    return NextResponse.json({ error:error.message|| "Registration failed"},
         { status:500 }
     );
 }
