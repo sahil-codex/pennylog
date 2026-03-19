@@ -5,6 +5,9 @@ import { sql } from "@/lib/db";
 export async function POST(req: Request) {
     const body = await req.json();
     const { email,password} = body;
+      console.log("BODY:", body);
+console.log("EMAIL:", email);
+console.log("PASSWORD:", password);
       console.log("DB URL:", process.env.DATABASE_URL);
 
     if(!email||!password) {
