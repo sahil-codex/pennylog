@@ -23,6 +23,9 @@ console.log("PASSWORD:", password);
         message:"User created succesfully",
     })
      }catch(error:any){
+           console.error("❌ FULL ERROR:", error);
+    console.error("❌ CODE:", error?.code);
+    console.error("❌ MESSAGE:", error?.message);
         if(error.code==="2305"){
             return NextResponse.json(
                 { error: "Email already registered"},
