@@ -5,10 +5,6 @@ import { sql } from "@/lib/db";
 export async function POST(req: Request) {
     const body = await req.json();
     const { email,password} = body;
-      console.log("BODY:", body);
-console.log("EMAIL:", email);
-console.log("PASSWORD:", password);
-      console.log("DB URL:", process.env.DATABASE_URL);
 
     if(!email||!password) {
         return NextResponse.json({error: "Missing fields"},{status:400});
@@ -20,19 +16,19 @@ console.log("PASSWORD:", password);
         
     ;
     return NextResponse.json({
-        message:"User created succesfully",
+        message:"User created successfully",
     })
      }catch(error:any){
-           console.error("❌ FULL ERROR:", error);
-    console.error("❌ CODE:", error?.code);
-    console.error("❌ MESSAGE:", error?.message);
+        
         if(error.code==="23505"){
+
             return NextResponse.json(
                 { error: "Email already registered"},
                 { status: 400}
             );
         }
-    return NextResponse.json({ error:error.message|| "Registration failed"},
+        console.error("❌ Unexpected error:", error);
+    return NextResponse.json({ error: "Registration failed"},
         { status:500 }
     );
 }
