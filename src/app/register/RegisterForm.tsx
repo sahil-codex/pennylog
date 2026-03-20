@@ -21,10 +21,11 @@ export default function RegisterPage(){
                 password
             })
         });
+        const data = await res.json();
         if(res.ok){
             router.push("/login");
         }else{
-            alert("Registration failed");
+            alert(data.error || "Registeration failed");
         }
         }
         return (
