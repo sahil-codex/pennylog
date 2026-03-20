@@ -26,7 +26,7 @@ console.log("PASSWORD:", password);
            console.error("❌ FULL ERROR:", error);
     console.error("❌ CODE:", error?.code);
     console.error("❌ MESSAGE:", error?.message);
-        if(error.code==="2305"){
+        if(error.code==="23505"){
             return NextResponse.json(
                 { error: "Email already registered"},
                 { status: 400}
