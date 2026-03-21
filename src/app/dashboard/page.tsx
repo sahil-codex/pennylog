@@ -71,7 +71,7 @@ async function getSummary(userId:string){
         </div>
 
         <div className="bg-white p-6 rounded-xl shadow">
-        <TransactionList/>
+        <TransactionList limit={5}/>
         </div>
        </div>
     

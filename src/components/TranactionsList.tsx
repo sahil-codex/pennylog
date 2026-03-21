@@ -3,14 +3,17 @@ import { getCurrentUser } from "@/lib/getCurrentUser";
 import TransactionRow from "./TransactionRow";
 
 
-
-export default async function TransactionList(){
+type Props ={
+    limit?:number;
+};
+export default async function TransactionList({limit}:Props){
     const user= await getCurrentUser();
     if(!user) return null;
     const transactions = await sql`
     SELECT * FROM transactions
      WHERE user_id =${user.userId}
-     ORDER BY transaction_date DESC`;
+     ORDER BY transaction_date DESC
+     ${limit ?sql`LIMIT ${limit}`:sql``}`;
      return (
         <div className="mt-10">
             <h2 className="text-xl font-bold mb-4">Recent Transactions</h2>
