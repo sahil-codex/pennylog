@@ -12,7 +12,7 @@ export default function DashboardLayout({
                         <h1 className="text-2xl font-bold mb-8">PennyLog</h1>
                         <nav className="flex flex-col gap-2">
                             <Link href="/dashboard" className={`flex items-center gap-2 p-2 rounded-lg ${pathname === "/dashboard" ? "bg-gray-200 text-black font-semibold" : "text-gray-700 hover:bg-gray-100"}`}>📊 Dashboard </Link>
-                              <Link href="/dashboard/transactions" className={`flex items-center gap-2 p-2 rounded-lg ${ pathname ==="/dashboard/transactions"?"bg-gray-200 text-black font-semibold":"text-gray-700 hover:bg-gray-100"}`}>
+                              <Link href="/dashboard/transactions" className={`flex items-center gap-2 p-2 rounded-lg ${ pathname.startsWith("/dashboard/transactions")?"bg-gray-200 text-black font-semibold":"text-gray-700 hover:bg-gray-200"}`}>
                                  💸 Transactions</Link>
                         </nav>
                     </div>
