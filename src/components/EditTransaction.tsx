@@ -16,6 +16,7 @@ export default function EditTransaction({transaction,onClose}:any){
         e.preventDefault();
         const res =  await fetch(`/api/transactions/${transaction.id}`,{
             method:"PUT",
+            credentials:"include",
             headers:{
                 "Content-Type":"application/json",
 
