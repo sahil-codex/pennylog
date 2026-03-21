@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-
+import { useRouter} from "next/navigation";
 
 export default function EditTransaction({transaction,onClose}:any){
+    const router = useRouter();
     const [amount,setAmount]=useState(transaction.amount);
     const [category,setCategory] = useState(transaction.category);
     const[description,setDescription] = useState(transaction.description);
@@ -27,7 +28,7 @@ export default function EditTransaction({transaction,onClose}:any){
             }),
         });
         if(res.ok){
-            window.location.reload();
+           router.refresh();
         }else{
             alert("Update failed");
         }
