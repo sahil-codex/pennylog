@@ -1,8 +1,10 @@
+"use client";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export default function DashboardLayout({
     children,}:{children:React.ReactNode;}){
-      
+      const pathname = usePathname();
         return (
             <div className="flex min-h-screen bg-gray-100">
                 <aside className="w-64 bg-white shadow-md p-6 flex flex-col justify-between">

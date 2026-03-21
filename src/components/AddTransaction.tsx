@@ -1,12 +1,14 @@
 "use client";
 import {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function AddTransaction(){
+    const router = useRouter();
     const [amount,setAmount] = useState("");
     const [category,setCategory] = useState("");
     const [description,setDescription] = useState("");
     const [date,setDate] = useState("");
-
+    
     async function handleSubmit(e:React.FormEvent) {
         e.preventDefault();
 
@@ -16,6 +18,7 @@ export default function AddTransaction(){
             headers:{
                 "Content-Type":"application/json",
             },
+         
             body:JSON.stringify({
                 amount:Number(amount),
                 category,
@@ -25,8 +28,7 @@ export default function AddTransaction(){
            });
 
            if(res.ok){
-            alert("Transaction added!");
-            window.location.reload();
+             router.refresh();
            }else{
             alert("Failed to add transaction");
            }

@@ -21,7 +21,7 @@ async function getSummary(userId:string){
     const summary =  await getSummary(user.userId);
 
   return (
-    <div className="p-10">
+    <div className="min-h-screen bg-gray-100 p-10">
         <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">
             Expense Dashboard
@@ -34,8 +34,12 @@ async function getSummary(userId:string){
         </form>
         
       </div>
+
+      <div className="bg-white p-6 rounded-xl shadow mb-6">
         <AddTransaction/>
-        <div className="grid grid-cols-3 gap-6 mb-8">
+        </div>
+
+        <div className="grid grid-cols-3 gap-6 mb-6">
             <div className="bg-white shadow p-6 rounded-xl">
                 <h2 className="text-gray-500">Total Expenses</h2>
                 <p className="text-2xl font-bold mt-2">
@@ -49,23 +53,25 @@ async function getSummary(userId:string){
                     {summary.transactions_count}
                 </p>
             </div>
+
             <div className="bg-white shadow p-6 rounded-xl">
                 <h2 className="text-gray-500">This Month</h2>
                 <p className="text-2xl font-bold mt-2">
                     ${summary.this_month_expense}
                 </p>
             </div>
-        </div>
-        <div className="grid grid-cols-2 gap-6 mb-8">
+            </div>
+        <div className="grid grid-cols-2 gap-6 mb-6">
           <div className="bg-white p-4 rounded-xl shadow">
           <MonthlyChart/>
           </div>
           <div className="bg-white p-4 rounded-xl shadow">
         <CategoryChart/>
         </div>
-        <div className="bg-white p-4 rounded-xl shadow">
-        <TransactionList/>
         </div>
+
+        <div className="bg-white p-6 rounded-xl shadow">
+        <TransactionList/>
         </div>
        </div>
     
