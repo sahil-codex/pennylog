@@ -1,21 +1,23 @@
 "use client";
 import { useState } from "react";
 import EditTransaction from "./EditTransaction";
+import { useRouter } from "next/navigation";
 
 export default function TransactionRow({ transaction }: any) {
    const [editing, setEditing] = useState(false);
    const [loading,setLoading] = useState(false);
-  
+   const router = useRouter();
   
    async function deleteTransaction() {
     setLoading(true);
     const res = await fetch(`/api/transactions/${transaction.id}`, {
       method: "DELETE",
+      credentials:"include",
     });
  
 
     if (res.ok) {
-      window.location.reload();
+       router.refresh();
     } else {
       alert("Failed to delete transaction");
     }
