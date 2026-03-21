@@ -30,6 +30,7 @@ export default function EditTransaction({transaction,onClose}:any){
         });
         if(res.ok){
            router.refresh();
+           onClose();
         }else{
             alert("Update failed");
         }
