@@ -1,8 +1,8 @@
 import {cookies} from "next/headers";
 import { verifyToken } from "@/lib/auth";
-
+import {sql} from "@/lib/db";
 export async function getCurrentUser(){
-    const cookieStore = await cookies();
+    const cookieStore =  await cookies();
     const token = cookieStore.get("token")?.value;
 
     if(!token){
@@ -11,7 +11,16 @@ export async function getCurrentUser(){
 
     try{
         const payload = verifyToken(token);
-        return payload;
+       const result = await sql`
+       SELECT id,email
+       FROM users
+       WHERE id = ${payload}`;
+       if(result.length===0) return null;
+       const user = result[0]; 
+       return {
+        userId:user.id,
+        email:user.email,
+       };
     }catch{
         return null;
     }

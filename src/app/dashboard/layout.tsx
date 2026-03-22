@@ -1,11 +1,12 @@
-"use client";
+import { getCurrentUser } from "@/lib/getCurrentUser";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
     children,}:{children:React.ReactNode;}){
       const pathname = usePathname();
-        return (
+      const user = await getCurrentUser();  
+      return (
             <div className="flex min-h-screen bg-gray-100">
                 <aside className="w-64 bg-white shadow-md p-6 flex flex-col justify-between">
                     <div>
@@ -16,7 +17,11 @@ export default function DashboardLayout({
                                  💸 Transactions</Link>
                         </nav>
                     </div>
-                   <button className="text-red-500 hover:underline">Logout</button>
+                     <div className="border-t pt-4">
+                        <p className="text-sm text-gray-500">Signed in as</p>
+                        <p className="font-medium truncate">{user?.email}</p>
+                     </div>
+
                 </aside>
                 <main className="flex-1 p-8">{children}</main>
             </div>
