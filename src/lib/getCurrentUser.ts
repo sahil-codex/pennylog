@@ -14,7 +14,7 @@ export async function getCurrentUser(){
        const result = await sql`
        SELECT id,email
        FROM users
-       WHERE id = ${payload}`;
+       WHERE id = ${payload.userId}`;
        if(result.length===0) return null;
        const user = result[0]; 
        return {
