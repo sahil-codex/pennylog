@@ -5,7 +5,7 @@ import AddTransaction from "@/components/AddTransaction";
 import TransactionList from "@/components/TranactionsList";
 import MonthlyChart from "@/components/MonthlyChart";
 import CategoryChart from "@/components/CategoryChart";
-
+import LogoutButton from "@/components/LogoutButton";
 async function getSummary(userId:string){
     const summary = await getUserSummary(userId);
      return summary;
@@ -27,12 +27,7 @@ async function getSummary(userId:string){
             Expense Dashboard
         </h1>
 
-           <form action="/api/logout" method="POST">
-          <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
-            Logout
-          </button>
-        </form>
-        
+         <LogoutButton/>        
       </div>
 
       <div className="bg-white p-6 rounded-xl shadow mb-6">
