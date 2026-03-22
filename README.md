@@ -7,15 +7,14 @@ Users can securely manage their finances with authentication, real-time updates,
 
 ## 🚀 Features
 
--🔐 Authentication (Register/Login with JWT)
--➕ Add, ✏️ Edit, ❌ Delete transactions
--📊 Dashboard with summary cards
--📈 Monthly expenses chart
--🥧 Category-wise expense breakdown
--📋 Transaction history table
--🧭 Sidebar layout (Dashboard / Transactions / Logout)
--🌐 Fully deployed on Vercel
-
+- 🔐 Authentication (Register/Login with JWT)
+- ➕ Add, ✏️ Edit, ❌ Delete transactions
+- 📊 Dashboard with summary cards
+- 📈 Monthly expenses chart
+- 🥧 Category-wise expense breakdown
+- 📋 Transaction history table
+- 🧭 Sidebar layout (Dashboard / Transactions / Logout)
+- 🌐 Fully deployed on Vercel
 ---
 
 ## 🛠 Tech Stack
@@ -28,18 +27,18 @@ Users can securely manage their finances with authentication, real-time updates,
 - **Deployment:** Vercel
 
 ---
-
-📂 Project Structure
-
-src
-├── app
-│ ├── dashboard
-│ ├── api
-│ ├── login
-│ └── register
-├── components
-├── lib
+## 📂 Project Structure
+```
+src/
+├── app/
+│   ├── dashboard/
+│   ├── api/
+│   ├── login/
+│   └── register/
+├── components/
+├── lib/
 └── middleware.ts
+```
 
  ---
 
