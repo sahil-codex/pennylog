@@ -1,10 +1,12 @@
 # 💰 PennyLog
+
 A full-stack expense tracking application built with modern web technologies.
 Users can securely manage their finances with authentication, real-time updates, and visual insights.
 
 ---
 
 ## 🚀 Features
+
 -🔐 Authentication (Register/Login with JWT)
 -➕ Add, ✏️ Edit, ❌ Delete transactions
 -📊 Dashboard with summary cards
@@ -17,6 +19,7 @@ Users can securely manage their finances with authentication, real-time updates,
 ---
 
 ## 🛠 Tech Stack
+
 - **Frontend:** Next.js (App Router), React, Tailwind CSS
 - **Backend:** Next.js API Routes
 - **Database:** PostgreSQL (Neon)
@@ -27,6 +30,7 @@ Users can securely manage their finances with authentication, real-time updates,
 ---
 
 ## 📂 Project Structure
+
 src/
  ├ app/
  │   ├ dashboard/
