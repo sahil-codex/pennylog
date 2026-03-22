@@ -31,16 +31,16 @@ Users can securely manage their finances with authentication, real-time updates,
 
 ## 📂 Project Structure
 
-src/
- ├ app/
- │   ├ dashboard/
- │   ├ api/
- │   ├ login/
- │   └ register/
- ├ components/
- ├ lib/
- └ middleware.ts
- 
+src
+├── app
+│ ├── dashboard
+│ ├── api
+│ ├── login
+│ └── register
+├── components
+├── lib
+└── middleware.ts
+
  ---
 
  ## 🧠 Key Highlights
